@@ -37,6 +37,11 @@ int main() {
 
 	LRU(frame1, frame2, frame3, refStrVect);
 
+
+	cout << "Thanks for using this program, dear Memory Manager!" << endl;
+	cout << "Completed with exit code: 0" << endl;
+	exit(0);
+
 }
 
 vector<int> readInRef(vector<int> vect) {
@@ -58,7 +63,7 @@ void LRU(int f1, int f2, int f3, vector<int> vect){
 
 	vector<int> frame = { -1, -1, -1};
 
-	cout << "Assignment of frames by LRU algorithm:" << endl;
+	cout << "Assignment of frames by LRU algorithm:" << endl << endl;
 	cout << "Frames: " << f1 << '\t' << f2 << '\t'<< f3 << endl;
 	cout << "------------------------------------------------------" << endl;
 
@@ -154,7 +159,9 @@ void LRU(int f1, int f2, int f3, vector<int> vect){
 
 
 	}
-	cout << pageFaults << endl;
+	cout << "------------------------------------------------------" << endl;
+
+	cout << "Number of Page Faults: " << pageFaults << endl;
 
 }
 
