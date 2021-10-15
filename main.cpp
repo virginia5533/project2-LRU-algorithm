@@ -72,8 +72,43 @@ void LRU(int f1, int f2, int f3, vector<int> vect){
 
 			}
 
-			else {
+			else if((vect.at(i) != frame.at(0)) || (vect.at(i) != frame.at(1)) || (vect.at(i) != frame.at(2))){
 				//LRU
+				int LRU1 = vect.at(0); 
+				int LRU2 = vect.at(1);
+				
+
+				for(int j = 0; j < i; j++) {
+					LRU1 = vect.at(j);
+					if(vect.at(j) != LRU1) {
+						LRU2 = vect.at(j);
+					}
+					cout << LRU1 << " " << LRU2 << endl;
+				}
+
+				if(LRU1 != frame.at(0) || LRU2 != frame.at(0)) {
+
+					frame.at(0) = vect.at(i);
+					cout << '\t' << frame.at(0) << '\t' <<  frame.at(1) << '\t' <<  frame.at(2) << endl;
+					break;
+				}
+
+				else if(LRU1 != frame.at(1) || LRU2 != frame.at(1)) {
+
+                                        frame.at(1) = vect.at(i);
+                                        cout << '\t' << frame.at(0) << '\t' <<  frame.at(1) << '\t' <<  frame.at(2) << endl;
+                                        break;
+                                }
+
+				else if(LRU1 != frame.at(2) || LRU2 != frame.at(2)) {
+
+                                        frame.at(2) = vect.at(i);
+                                        cout << '\t' << frame.at(0) << '\t' <<  frame.at(1) << '\t' <<  frame.at(2) << endl;
+                                        break;
+                                }
+
+
+
 
 			}
 
