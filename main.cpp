@@ -65,26 +65,33 @@ void LRU(int f1, int f2, int f3, vector<int> vect){
 	for(int i = 0; i < vect.size(); i++) {
 
 		int index = i;
+		int LRU1 = -1;
+		int LRU2 = -1;
 
 		for(int i = 0; i < frame.size(); i++) {
+
+			
 
 			if(frame.at(i) == -1) {
 				frame.at(i) = vect.at(i);
 				cout << '\t' << frame.at(0) << '\t' <<  frame.at(1) << '\t' <<  frame.at(2) << endl;
+				pageFaults++;
 				break;
 
 			}
 
-			else if((vect.at(i) != frame.at(0)) || (vect.at(i) != frame.at(1)) || (vect.at(i) != frame.at(2))){
+			else if((vect.at(index) != frame.at(0)) && (vect.at(index) != frame.at(1)) && (vect.at(index) != frame.at(2))){
 				//LRU
-				int LRU1 = 0; 
+				LRU1 = -1;
+				LRU2 = -1;
 				
-				int LRU2 = 0;
+				
 				
 
 				for(int j = 0; j < index; j++) {
 					if(vect.at(j) == frame.at(0) || vect.at(j) == frame.at(1) || vect.at(j) == frame.at(2)) {
 						LRU1 = vect.at(j);
+						
 
 					}
 				}
@@ -92,46 +99,62 @@ void LRU(int f1, int f2, int f3, vector<int> vect){
 					if((vect.at(j) == frame.at(0) || vect.at(j) == frame.at(1) || vect.at(j) == frame.at(2)) && (vect.at(j) != LRU1)){
 
 						LRU2 = vect.at(j);
+						
 					}
 
 				}
 
-				cout << LRU1 << " " << LRU2 << endl;
+				//cout << LRU1 << " " << LRU2 << endl;
 
-				if(LRU1 != frame.at(0) && LRU2 != frame.at(0)) {
+				if((LRU1 != frame.at(0)) && (LRU2 != frame.at(0))) {
 
 					frame.at(0) = vect.at(index);
 					cout << '\t' << frame.at(0) << '\t' <<  frame.at(1) << '\t' <<  frame.at(2) << endl;
+					pageFaults++;
 					break;
 				}
 
-				else if(LRU1 != frame.at(1) && LRU2 != frame.at(1)) {
+				else if((LRU1 != frame.at(1)) && (LRU2 != frame.at(1))) {
 
                                         frame.at(1) = vect.at(index);
                                         cout << '\t' << frame.at(0) << '\t' <<  frame.at(1) << '\t' <<  frame.at(2) << endl;
-                                        break;
+                                        pageFaults++;
+					break;
                                 }
 
-				else if(LRU1 != frame.at(2) && LRU2 != frame.at(2)) {
+				else if((LRU1 != frame.at(2)) && (LRU2 != frame.at(2))) {
 
                                         frame.at(2) = vect.at(index);
                                         cout << '\t' << frame.at(0) << '\t' <<  frame.at(1) << '\t' <<  frame.at(2) << endl;
-                                        break;
+                                        pageFaults++;
+					break;
                                 }
+
+
 
 
 
 
 			}
 
+			else{
+                                
+                                cout << '\t' << frame.at(0) << '\t' <<  frame.at(1) << '\t' <<  frame.at(2) << endl;
+                                break;
+
+                        }
+
+			
+
+
 		}
-			//cout << '\t' << frame.at(0) << '\t' <<  frame.at(1) << '\t' <<  frame.at(2) << endl;
 
 		
 
 
 
 	}
+	cout << pageFaults << endl;
 
 }
 
