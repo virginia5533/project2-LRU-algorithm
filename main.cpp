@@ -42,6 +42,7 @@ int main() {
 	cout << "Completed with exit code: 0" << endl;
 	exit(0);
 
+	return(0);
 }
 
 vector<int> readInRef(vector<int> vect) {
